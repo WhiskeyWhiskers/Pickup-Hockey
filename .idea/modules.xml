@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/OIC-Pickup-Tracker.iml" filepath="$PROJECT_DIR$/.idea/OIC-Pickup-Tracker.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/Pickup-Hockey.iml" filepath="$PROJECT_DIR$/.idea/Pickup-Hockey.iml" />
     </modules>
   </component>
 </project>
