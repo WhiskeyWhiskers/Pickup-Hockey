@@ -1,4 +1,3 @@
-from logging import info
 import requests
 import sys
 from hamcrest import *
