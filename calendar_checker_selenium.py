@@ -25,14 +25,16 @@ class ScheduleChecker(object):
         email_box = self.driver.find_element_by_id('ContentPlaceHolder1_txtUserName')
         pw_box = self.driver.find_element_by_id('ContentPlaceHolder1_txtPassword')
         login_sbt_btn = self.driver.find_element_by_id('ctl00_ContentPlaceHolder1_cmdSubmit_input')
+
         email_box.send_keys(EMAIL)
         pw_box.send_keys(PW)
         login_sbt_btn.click()
 
         try:
             self.driver.get(self.next_camp_url)
-            select_activity_text = self.driver.find_element_by_id('ContentPlaceHolder1_secUniqueNames').text.lower()
-            assert_that(select_activity_text, contains_string('hockey'))
+            too_early_message = self.driver.find_element_by_id(
+                'ctl00_ContentPlaceHolder1_ctl00_ContentPlaceHolder1_litErrorPanel').text.lower()
+            assert 'registration does not fall within' not in too_early_message
             raise Exception("New month is up!")
         except AssertionError:
             print "Nothing posted yet."
