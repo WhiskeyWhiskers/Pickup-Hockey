@@ -1,6 +1,7 @@
+#!/usr/bin/env python
+
 import requests
 import sys
-import ipdb
 from data.form_data import LOGIN_FORM_DATA, LOGOUT_FORM_DATA
 
 CAL_URL = 'https://oaklandice.maxgalaxy.net/DayCampSelection.aspx?DayCampID={MONTH_ID}'
