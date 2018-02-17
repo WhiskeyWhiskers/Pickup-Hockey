@@ -42,7 +42,7 @@ class ScheduleChecker(object):
         elif self.month_unready_msg in r_cal.text:
             print("Nothing posted yet")
         elif self.month_ready_msg in r_cal.text:
-            print("New spots are up!")
+            raise SystemExit("New spots are up!")
         else:
             raise RuntimeError('The dom has changed! Time to update this script...')
 
