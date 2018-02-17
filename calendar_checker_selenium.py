@@ -1,5 +1,4 @@
 from selenium import webdriver
-from hamcrest import assert_that, contains_string
 import sys
 import os
 
