@@ -14,7 +14,7 @@ class ScheduleChecker(object):
         self.cal_url = 'https://oaklandice.maxgalaxy.net/DayCampSelection.aspx?DayCampID=%s' % month_id
         self.login_url = 'https://oaklandice.maxgalaxy.net/Login.aspx'
 
-        self.month_ready_msg = 'Drop-In Hockey'
+        self.month_ready_msg = 'Early Morning Drop In Hockey'
         self.month_unready_msg = 'Registration does not fall within'
         self.logged_out_msg = 'You must be logged in to register'
 
@@ -38,13 +38,13 @@ class ScheduleChecker(object):
     def check_current_month(self):
         r_cal = self.session.get(self.cal_url)
         if self.logged_out_msg in r_cal.text:
-            print("Logged out of Oakland Ice!")
+            raise RuntimeError("Logged out of Oakland Ice!")
         elif self.month_unready_msg in r_cal.text:
             print("Nothing posted yet")
         elif self.month_ready_msg in r_cal.text:
             raise SystemExit("New spots are up!")
         else:
-            raise RuntimeError('The dom has changed! Time to update this script...')
+            raise RuntimeError("Unrecognized page!\n\t%s" % r_cal.request.url)
 
 if __name__ == "__main__":
     month = sys.argv[1]
